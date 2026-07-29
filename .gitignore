@@ -1,0 +1,25 @@
+# Maven
+target/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+out/
+
+# Eclipse (jeśli kiedyś użyjesz)
+.project
+.classpath
+.settings/
+
+# VS Code
+.vscode/
+
+# Logi
+*.log
+
+# System Windows
+Thumbs.db
+Desktop.ini
+
+# System macOS
+.DS_Store
