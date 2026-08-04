@@ -28,6 +28,14 @@ public class WebElementsTests {
         assertEquals(typeUserNameValue, "Selenium Start");
     }
 
+    @Test
+    public void filePickingTest() {
+        sleep();
+        WebElement uploadFilePicker = driver.findElement(By.id("upload_file"));
+        uploadFilePicker.sendKeys("C:\\test.jpg");
+        sleep();
+    }
+
     private void sleep() {
         try {
             Thread.sleep(3000);
