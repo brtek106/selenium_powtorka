@@ -6,7 +6,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.*;
 
 public class WebElementsTests {
 
@@ -52,6 +52,55 @@ public class WebElementsTests {
 
         String emptyUserNameField = userNameField.getAttribute("value");
         assertEquals(emptyUserNameField, "");
+    }
+
+    @Test
+    public void checkRadioButtonTest() {
+        WebElement maleRadioButton = driver.findElement(By.cssSelector("input[value='male']"));
+        WebElement femaleRadioButton = driver.findElement(By.cssSelector("input[value='female']"));
+
+        sleep();
+        maleRadioButton.click();
+        sleep();
+        assertTrue(maleRadioButton.isSelected());
+
+        femaleRadioButton.click();
+        sleep();
+        assertTrue(femaleRadioButton.isSelected());
+        assertFalse(maleRadioButton.isSelected());
+    }
+
+    @Test
+    public void checkboxButtonTest() {
+        WebElement pizzaCheckbox = driver.findElement(By.cssSelector("input[value='pizza']"));
+        WebElement spaghettiCheckbox = driver.findElement(By.cssSelector("input[value='spaghetti']"));
+        WebElement hamburgerCheckbox = driver.findElement(By.cssSelector("input[value='hamburger']"));
+
+        assertFalse(pizzaCheckbox.isSelected());
+        assertFalse(spaghettiCheckbox.isSelected());
+        assertFalse(hamburgerCheckbox.isSelected());
+
+        sleep();
+
+        pizzaCheckbox.click();
+        spaghettiCheckbox.click();
+        hamburgerCheckbox.click();
+
+        assertTrue(pizzaCheckbox.isSelected());
+        assertTrue(spaghettiCheckbox.isSelected());
+        assertTrue(hamburgerCheckbox.isSelected());
+
+        sleep();
+
+        pizzaCheckbox.click();
+        spaghettiCheckbox.click();
+        hamburgerCheckbox.click();
+
+        sleep();
+
+        assertFalse(pizzaCheckbox.isSelected());
+        assertFalse(spaghettiCheckbox.isSelected());
+        assertFalse(hamburgerCheckbox.isSelected());
     }
 
     private void sleep() {
