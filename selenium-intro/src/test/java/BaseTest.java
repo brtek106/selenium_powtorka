@@ -5,7 +5,7 @@ import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
     public WebDriver driver;
-    public String baseUrl = "https://theinternet.przyklady.javastart.pl/dynamic_loading/1";
+    public String baseUrl = "https://theinternet.przyklady.javastart.pl/dynamic_loading/2";
 
     @BeforeMethod
     public void beforeTest() {
