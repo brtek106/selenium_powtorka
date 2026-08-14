@@ -1,3 +1,5 @@
+package Temat7;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -6,36 +8,30 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.assertEquals;
 
-public class CheckBoxesTests {
+public class FileUploadTests {
+
     private WebDriver driver;
 
     @BeforeMethod
     public void beforeTest() {
         driver = new ChromeDriver();
-        driver.navigate().to("https://theinternet.przyklady.javastart.pl/checkboxes");
         driver.manage().window().maximize();
+        driver.navigate().to("https://theinternet.przyklady.javastart.pl/upload");
     }
 
     @Test
-    public void checkboxesTest() {
-        WebElement checkbox1 = driver.findElement(By.cssSelector("#checkboxes > input[type=checkbox]:nth-child(1)"));
-        WebElement checkbox2 = driver.findElement(By.cssSelector("#checkboxes > input[type=checkbox]:nth-child(3)"));
+    public void fileUploadTest() {
+        WebElement fileUploadButton = driver.findElement(By.id("file-upload"));
+        fileUploadButton.sendKeys("C:\\Gry\\testfile.txt");
 
-        assertFalse(checkbox1.isSelected());
-        assertTrue(checkbox2.isSelected());
-
+        driver.findElement(By.id("file-submit")).click();
         sleep();
 
-        checkbox1.click();
-        checkbox2.click();
+        WebElement uploadedFiles = driver.findElement(By.id("uploaded-files"));
 
-        sleep();
-
-        assertTrue(checkbox1.isSelected());
-        assertFalse(checkbox2.isSelected());
+        assertEquals(uploadedFiles.getText(), "testfile.txt");
     }
 
     public void sleep() {

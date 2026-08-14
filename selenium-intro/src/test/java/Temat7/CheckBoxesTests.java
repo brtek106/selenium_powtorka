@@ -1,41 +1,43 @@
+package Temat7;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
-public class DropDownTests {
-
+public class CheckBoxesTests {
     private WebDriver driver;
 
     @BeforeMethod
     public void beforeTest() {
         driver = new ChromeDriver();
+        driver.navigate().to("https://theinternet.przyklady.javastart.pl/checkboxes");
         driver.manage().window().maximize();
-        driver.navigate().to("https://theinternet.przyklady.javastart.pl/dropdown");
     }
 
     @Test
-    public void dropDownTest() {
-        WebElement dropdown = driver.findElement(By.id("dropdown"));
-        Select select = new Select(dropdown);
+    public void checkboxesTest() {
+        WebElement checkbox1 = driver.findElement(By.cssSelector("#checkboxes > input[type=checkbox]:nth-child(1)"));
+        WebElement checkbox2 = driver.findElement(By.cssSelector("#checkboxes > input[type=checkbox]:nth-child(3)"));
 
-        assertEquals(select.getFirstSelectedOption().getText(), "Please select an option");
+        assertFalse(checkbox1.isSelected());
+        assertTrue(checkbox2.isSelected());
 
-        select.selectByValue("1");
         sleep();
-        assertEquals(select.getFirstSelectedOption().getText(), "Option 1");
 
-        select.selectByValue("2");
+        checkbox1.click();
+        checkbox2.click();
+
         sleep();
-        assertEquals(select.getFirstSelectedOption().getText(), "Option 2");
-        sleep();
+
+        assertTrue(checkbox1.isSelected());
+        assertFalse(checkbox2.isSelected());
     }
 
     public void sleep() {
