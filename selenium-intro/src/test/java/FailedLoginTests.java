@@ -10,7 +10,7 @@ import java.time.Duration;
 
 import static org.testng.Assert.assertEquals;
 
-public class MyFirstTest {
+public class FailedLoginTests {
 
     private WebDriver driver;
 
@@ -23,19 +23,24 @@ public class MyFirstTest {
     }
 
     @Test
-    public void myFirstTest() {
-        driver.findElement(By.cssSelector("#Content a")).click();
-        driver.findElement(By.cssSelector("#MenuContent a[href*='signonForm']")).click();
+    public void asUserTryToLogInWithIncorrectLoginAndPassword() {
+        WebElement enterStoreLink = driver.findElement(By.cssSelector("#Content a"));
+        enterStoreLink.click();
+
+        WebElement signOnLink = driver.findElement(By.cssSelector("#MenuContent a[href*='signonForm']"));
+        signOnLink.click();
+
         WebElement usernameField = driver.findElement(By.name("username"));
-        usernameField.clear();
-        usernameField.sendKeys("admin");
+        usernameField.sendKeys("NotExistingLogin");
 
         WebElement passwordField = driver.findElement(By.name("password"));
-        passwordField.clear();
-        passwordField.sendKeys("admin");
+        passwordField.sendKeys("NotProperPassword");
 
-        driver.findElement(By.name("signon")).click();
-        assertEquals(driver.findElement(By.cssSelector("#Content ul[class='messages'] li")).getText(), "Invalid username or password. Signon failed.");
+        WebElement signOnButton = driver.findElement(By.name("signon"));
+        signOnButton.click();
+
+        WebElement messageLabel = driver.findElement(By.cssSelector("#Content ul[class='messages'] li"));
+        assertEquals(messageLabel.getText(), "Invalid username or password. Signon failed.");
     }
 
     @AfterMethod
