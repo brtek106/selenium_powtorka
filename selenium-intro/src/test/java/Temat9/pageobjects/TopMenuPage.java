@@ -1,4 +1,4 @@
-package Temat9;
+package Temat9.pageobjects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
