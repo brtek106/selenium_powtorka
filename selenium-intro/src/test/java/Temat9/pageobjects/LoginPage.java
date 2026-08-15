@@ -19,6 +19,9 @@ public class LoginPage {
     @FindBy(css = "#Content ul[class='messages'] li")
     private WebElement messageLabel;
 
+    @FindBy(css = "area[alt='Fish']")
+    private WebElement btnFishImage;
+
     private WebDriver driver;
 
     public LoginPage(WebDriver driver) {
@@ -43,5 +46,9 @@ public class LoginPage {
     public String getWarningMessage() {
         String warningText = messageLabel.getText();
         return warningText;
+    }
+
+    public void clickOnFishImageButton() {
+        btnFishImage.click();
     }
 }
