@@ -1,6 +1,7 @@
 package Temat9.pageobjects;
 
 import Temat9.drivermanager.DriverManager;
+import Temat9.waits.WaitForElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,6 +17,7 @@ public class TopMenuPage {
     }
 
     public void clickOnSignInLink() {
+        WaitForElement.waitUntilElementIsClickable(signOnLink);
         signOnLink.click();
     }
 }

@@ -1,6 +1,7 @@
 package Temat9.pageobjects;
 
 import Temat9.drivermanager.DriverManager;
+import Temat9.waits.WaitForElement;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -27,12 +28,11 @@ public class LoginPage {
     }
 
     public void typeIntoUserNameField(String username) {
-        usernameField.clear();
+        WaitForElement.waitUntilElementIsVisible(usernameField);
         usernameField.sendKeys(username);
     }
 
     public void typeIntoPasswordField(String password) {
-        passwordField.clear();
         passwordField.sendKeys(password);
     }
 
@@ -41,6 +41,7 @@ public class LoginPage {
     }
 
     public String getWarningMessage() {
+        WaitForElement.waitUntilElementIsVisible(messageLabel);
         String warningText = messageLabel.getText();
         return warningText;
     }
