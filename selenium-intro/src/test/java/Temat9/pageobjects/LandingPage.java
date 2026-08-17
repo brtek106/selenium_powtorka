@@ -1,20 +1,16 @@
 package Temat9.pageobjects;
 
-import org.openqa.selenium.WebDriver;
+import Temat9.drivermanager.DriverManager;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class LandingPage {
-
     @FindBy(css = "#Content a")
     private WebElement enterStoreLink;
 
-    private WebDriver driver;
-
-    public LandingPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+    public LandingPage() {
+        PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 
     public void clickOnEnterStoreLink() {

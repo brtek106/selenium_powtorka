@@ -1,5 +1,6 @@
 package Temat9.pageobjects;
 
+import Temat9.drivermanager.DriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,11 +10,8 @@ public class FooterPage {
     @FindBy(css = "#Banner img[src*='dog']")
     private WebElement bannerAfterLoginLogo;
 
-    private WebDriver driver;
-
-    public FooterPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+    public FooterPage() {
+        PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 
     public boolean isBannerAfterLoginDisplayed() {
