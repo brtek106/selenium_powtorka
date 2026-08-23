@@ -16,7 +16,7 @@ public class FailedLoginTests extends TestBase {
 
         LoginPage loginPage = new LoginPage();
         loginPage
-                .typeIntoPasswordField("IncorrectUsername")
+                .typeIntoUserNameField("IncorrectUsername")
                 .typeIntoPasswordField("InvalidPassword")
                 .clickOnLoginButton();
         String warningMessage = loginPage.getWarningMessage();
