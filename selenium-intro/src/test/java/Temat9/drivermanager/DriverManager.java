@@ -1,7 +1,10 @@
 package Temat9.drivermanager;
 
-import Temat9.configuration.LocalWebDriverProperties;
 import org.openqa.selenium.WebDriver;
+
+import static Temat9.configuration.TestRunProperties.getBrowserToRun;
+import static Temat9.configuration.TestRunProperties.getIsRemoteRun;
+import static Temat9.drivermanager.BrowserType.CHROME;
 
 public class DriverManager {
 
@@ -13,14 +16,14 @@ public class DriverManager {
     public static WebDriver getWebDriver() {
 
         if (driver == null) {
-            driver = BrowserFactory.getBrowser(LocalWebDriverProperties.getLocalBrowser());
+            driver = new BrowserFactory(getBrowserToRun(), getIsRemoteRun()).getBrowser();
         }
         return driver;
     }
 
     public static void disposeDriver() {
         driver.close();
-        if (!LocalWebDriverProperties.getLocalBrowser().equals(BrowserType.CHROME)) {
+        if (!getBrowserToRun().equals(CHROME)) {
             driver.quit();
         }
         driver = null;

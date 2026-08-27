@@ -4,7 +4,7 @@ public enum BrowserType {
 
     FIREFOX("firefox"),
     CHROME("chrome"),
-    EDGE("microsoftedge");
+    IE("internetExplorer");
 
     private final String browser;
 
