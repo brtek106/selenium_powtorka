@@ -3,12 +3,14 @@
     <suite name="All Pet Store Tests" parallel="tests" thread-count="2">
     
     <test name="Negative Login Tests">
+        <parameter name="browser" value="FIREFOX"></parameter>
         <classes>
             <class name="Temat9.tests.FailedLoginTests"></class>
         </classes>
     </test>
     
     <test name="Positive Login Tests">
+        <parameter name="browser" value="CHROME"></parameter>
         <classes>
             <class name="Temat9.tests.PositiveLoginTests"></class>
         </classes>
