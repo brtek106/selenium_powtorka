@@ -8,24 +8,25 @@ import static Temat9.drivermanager.BrowserType.CHROME;
 
 public class DriverManager {
 
-    private static WebDriver driver;
+    private static ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
 
     private DriverManager() {
     }
 
     public static WebDriver getWebDriver() {
 
-        if (driver == null) {
-            driver = new BrowserFactory(getBrowserToRun(), getIsRemoteRun()).getBrowser();
+        //Sprawdzenie czy wartość zmiennej WebDrivera dla danego wątku jest nullem
+        if (webDriverThreadLocal.get() == null) {
+            webDriverThreadLocal.set(new BrowserFactory(getBrowserToRun(), getIsRemoteRun()).getBrowser());
         }
-        return driver;
+        return webDriverThreadLocal.get();
     }
 
     public static void disposeDriver() {
-        driver.close();
-        if (!getBrowserToRun().equals(CHROME)) {
-            driver.quit();
-        }
-        driver = null;
+     webDriverThreadLocal.get().close();
+     if (!getBrowserToRun().equals(CHROME)) {
+         webDriverThreadLocal.get().quit();
+     }
+     webDriverThreadLocal.remove();
     }
 }
