@@ -2,9 +2,9 @@ package Temat9.tests;
 
 import Temat9.configuration.ConfigurationProperties;
 import Temat9.configuration.PropertiesLoader;
-import Temat9.drivermanager.BrowserType;
-import Temat9.drivermanager.DriverManager;
-import Temat9.drivermanager.DriverUtils;
+import Temat9.driver.BrowserType;
+import Temat9.driver.manager.DriverManager;
+import Temat9.driver.manager.DriverUtils;
 import io.qameta.allure.Step;
 import org.testng.annotations.*;
 

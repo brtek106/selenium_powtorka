@@ -1,6 +1,6 @@
 package Temat9.pageobjects;
 
-import Temat9.drivermanager.DriverManager;
+import Temat9.driver.manager.DriverManager;
 import Temat9.waits.WaitForElement;
 import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
@@ -11,7 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class FooterPage {
 
-    private Logger logger = LogManager.getRootLogger();
+    private Logger logger = LogManager.getLogger(FooterPage.class);
 
     @FindBy(css = "#Banner img[src*='dog']")
     private WebElement bannerAfterLoginLogo;

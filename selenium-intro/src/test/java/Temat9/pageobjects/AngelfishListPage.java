@@ -1,6 +1,6 @@
 package Temat9.pageobjects;
 
-import Temat9.drivermanager.DriverManager;
+import Temat9.driver.manager.DriverManager;
 import Temat9.waits.WaitForElement;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

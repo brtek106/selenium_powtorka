@@ -1,6 +1,6 @@
 package Temat9.tests;
 
-import Temat9.drivermanager.DriverUtils;
+import Temat9.driver.manager.DriverUtils;
 import Temat9.pageobjects.LoginPage;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;

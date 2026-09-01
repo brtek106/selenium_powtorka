@@ -1,4 +1,4 @@
-package Temat9.drivermanager;
+package Temat9.driver;
 
 public enum BrowserType {
 

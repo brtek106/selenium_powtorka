@@ -1,6 +1,6 @@
 package Temat9.waits;
 
-import Temat9.drivermanager.DriverManager;
+import Temat9.driver.manager.DriverManager;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;

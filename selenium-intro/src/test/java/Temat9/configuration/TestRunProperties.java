@@ -1,6 +1,6 @@
 package Temat9.configuration;
 
-import Temat9.drivermanager.BrowserType;
+import Temat9.driver.BrowserType;
 
 public class TestRunProperties {
 

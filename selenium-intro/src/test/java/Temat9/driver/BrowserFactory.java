@@ -1,4 +1,4 @@
-package Temat9.drivermanager;
+package Temat9.driver;
 
 import Temat9.configuration.TestRunProperties;
 import org.openqa.selenium.WebDriver;
