@@ -1,6 +1,7 @@
 package Temat9.pageobjects;
 
 import Temat9.driver.manager.DriverManager;
+import Temat9.generic.assertions.AssertWebElement;
 import Temat9.waits.WaitForElement;
 import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
@@ -55,12 +56,12 @@ public class LoginPage {
         return new FooterPage();
     }
 
-    @Step("Getting warning message from Login Page")
-    public String getWarningMessage() {
+    @Step("Assert that warning message {warningMessage} is displayed")
+    public LoginPage assertThatWarningIsDisplayed(String warningMessage) {
+        logger.info("Checking if warning message {} is displayed", warningMessage);
         WaitForElement.waitUntilElementIsVisible(messageLabel);
-        String warningText = messageLabel.getText();
-        logger.info("Returned warning message was: {}", warningText);
-        return warningText;
+        AssertWebElement.assertThat(messageLabel).isDisplayed().hasText(warningMessage);
+        return this;
     }
 
     public FishListPage clickOnFishImageButton() {
