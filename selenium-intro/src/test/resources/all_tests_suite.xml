@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
     <suite name="All Pet Store Tests" parallel="tests" thread-count="2">
+
+    <listeners>
+        <listener class-name="Temat9.utils.testng.listeners.TestListener"/>
+    </listeners>
     
     <test name="Negative Login Tests">
-        <parameter name="browser" value="CHROME"></parameter>
+        <parameter name="browser" value="CHROME"/>
         <classes>
-            <class name="Temat9.tests.FailedLoginTests"></class>
+            <class name="Temat9.tests.FailedLoginTests"/>
         </classes>
     </test>
     
     <test name="Positive Login Tests">
-        <parameter name="browser" value="CHROME"></parameter>
+        <parameter name="browser" value="CHROME"/>
         <classes>
-            <class name="Temat9.tests.PositiveLoginTests"></class>
+            <class name="Temat9.tests.PositiveLoginTests"/>
         </classes>
     </test>
 
