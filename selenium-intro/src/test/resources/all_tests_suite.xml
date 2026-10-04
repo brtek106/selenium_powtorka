@@ -4,6 +4,7 @@
 
     <listeners>
         <listener class-name="Temat9.utils.testng.listeners.TestListener"/>
+        <listener class-name="Temat9.utils.testng.listeners.AnnotationTransformer"/>
     </listeners>
     
     <test name="Negative Login Tests">

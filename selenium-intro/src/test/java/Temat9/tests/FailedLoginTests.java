@@ -2,6 +2,7 @@ package Temat9.tests;
 
 import Temat9.driver.manager.DriverUtils;
 import Temat9.pageobjects.LoginPage;
+import Temat9.utils.testng.listeners.RetryAnalyzer;
 import io.qameta.allure.*;
 import org.testng.annotations.Test;
 
