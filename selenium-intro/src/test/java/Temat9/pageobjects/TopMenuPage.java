@@ -1,30 +1,20 @@
 package Temat9.pageobjects;
 
-import Temat9.driver.manager.DriverManager;
 import Temat9.waits.WaitForElement;
 import io.qameta.allure.Step;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class TopMenuPage {
-
-    private Logger logger = LogManager.getLogger(TopMenuPage.class);
+public class TopMenuPage extends BasePage {
 
     @FindBy(css = "#MenuContent a[href*='signonForm']")
     private WebElement signOnLink;
-
-    public TopMenuPage() {
-        PageFactory.initElements(DriverManager.getWebDriver(), this);
-    }
 
     @Step("Click on Sign In Link")
     public LoginPage clickOnSignInLink() {
         WaitForElement.waitUntilElementIsClickable(signOnLink);
         signOnLink.click();
-        logger.info("Clicked on Sign On Link");
+        log().info("Clicked on Sign On Link");
         return new LoginPage();
     }
 }
