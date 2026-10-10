@@ -9,7 +9,6 @@ import io.qameta.allure.TmsLink;
 import org.testng.annotations.Test;
 
 import static Temat9.navigation.ApplicationURLs.LOGIN_URL;
-import static org.testng.Assert.assertTrue;
 
 public class PositiveLoginTests extends TestBase {
 
