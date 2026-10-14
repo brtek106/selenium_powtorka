@@ -45,6 +45,17 @@ public class JavaScriptAlertsTests {
         assertEquals(message.getText(), "You clicked: Cancel");
     }
 
+    @Test
+    public void javaScriptAlertPromptTest() {
+        WebElement jsPromptButton = driver.findElement(By.cssSelector("button[onclick='jsPrompt()']"));
+        jsPromptButton.click();
+        driver.switchTo().alert().sendKeys("Selenium is cool");
+        driver.switchTo().alert().accept();
+
+        WebElement message = driver.findElement(By.id("result"));
+        assertEquals(message.getText(), "You entered: Selenium is cool");
+    }
+
     @AfterMethod
     public void afterTest() {
         driver.close();
