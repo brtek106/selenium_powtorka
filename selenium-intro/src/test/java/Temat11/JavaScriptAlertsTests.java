@@ -31,6 +31,20 @@ public class JavaScriptAlertsTests {
         assertEquals(message.getText(), "You successfuly clicked an alert");
     }
 
+    @Test
+    public void javaScriptAlertConfirmTest() {
+        WebElement jsConfirmButton = driver.findElement(By.cssSelector("button[onclick='jsConfirm()']"));
+        jsConfirmButton.click();
+        driver.switchTo().alert().accept();
+
+        WebElement message = driver.findElement(By.id("result"));
+        assertEquals(message.getText(), "You clicked: Ok");
+
+        jsConfirmButton.click();
+        driver.switchTo().alert().dismiss();
+        assertEquals(message.getText(), "You clicked: Cancel");
+    }
+
     @AfterMethod
     public void afterTest() {
         driver.close();
