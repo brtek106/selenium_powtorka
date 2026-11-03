@@ -1,0 +1,25 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Parametrized Suite" >
+    <test name="Parametrized Test 1">
+        <parameter name="queryToSearch" value="JavaStart"/>
+        <parameter name="expectedTitle" value="JavaStart at DuckDuckGo"/>
+        <classes>
+            <class name="Temat14.ParametersFromTestNgXmlTests"/>
+        </classes>
+    </test>
+    <test name="Parametrized Test 2">
+        <parameter name="queryToSearch" value="Selenium"/>
+        <parameter name="expectedTitle" value="Selenium at DuckDuckGo"/>
+        <classes>
+            <class name="Temat14.ParametersFromTestNgXmlTests"/>
+        </classes>
+    </test>
+    <test name="Parametrized Test 3">
+    <parameter name="queryToSearch" value="TestNG"/>
+    <parameter name="expectedTitle" value="TestNG at DuckDuckGo"/>
+        <classes>
+            <class name="Temat14.ParametersFromTestNgXmlTests"/>
+        </classes>
+    </test>
+</suite>
