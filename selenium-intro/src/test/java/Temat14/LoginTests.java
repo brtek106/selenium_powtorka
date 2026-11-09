@@ -9,6 +9,11 @@ import static org.testng.AssertJUnit.assertTrue;
 public class LoginTests {
 
     private WebDriver driver;
+    private IncorrectLoginTestData incorrectLoginTestData;
+
+    public LoginTests(IncorrectLoginTestData incorrectLoginTestData) {
+        this.incorrectLoginTestData = incorrectLoginTestData;
+    }
 
     @BeforeMethod
     public void beforeTest() {
@@ -17,16 +22,15 @@ public class LoginTests {
         driver.get("https://theinternet.przyklady.javastart.pl/login");
     }
 
-
-    @Test(dataProvider = "testData")
-    public void asUserLoginUsingIncorrectCredentials(String username, String password, String expectedWarning) {
+    @Test
+    public void incorrectLoginDataTest() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.enterUsername(username);
-        loginPage.enterPassword(password);
+        loginPage.enterUsername(incorrectLoginTestData.getUsername());
+        loginPage.enterPassword(incorrectLoginTestData.getPassword());
         loginPage.clickLoginButton();
         String warningMessage = loginPage.getWarningMessage();
 
-        assertTrue(warningMessage.contains(expectedWarning));
+        assertTrue(warningMessage.contains(incorrectLoginTestData.getExpectedMessage()));
     }
 
     @AfterMethod
@@ -35,12 +39,11 @@ public class LoginTests {
         driver.quit();
     }
 
-    @DataProvider
-    public Object[][] testData() {
-        return new Object[][]{
-                {"", "", "Your username is invalid!"},
-                {"tomsmith", "password", "Your password is invalid!"},
-                {"incorrectlogin", "SuperSecretPassword!", "Your username is invalid!"}
-        };
+    @Factory
+    public static Object[] testData() {
+        LoginTests firstTestToExecute = new LoginTests(new IncorrectLoginTestData("", "", "Your username is invalid!"));
+        LoginTests secondTestToExecute = new LoginTests(new IncorrectLoginTestData("tomsmith", "password", "Your password is invalid!"));
+        LoginTests thirdTestToExecute = new LoginTests(new IncorrectLoginTestData("badlogin", "SuperSecretPassword!", "Your username is invalid!"));
+        return new Object[]{firstTestToExecute, secondTestToExecute, thirdTestToExecute};
     }
 }
