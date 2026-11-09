@@ -17,11 +17,9 @@ public class LoginTests {
         driver.get("https://theinternet.przyklady.javastart.pl/login");
     }
 
-    @Parameters({"username", "password", "expectedWarning"})
-    @Test
-    public void asUserLoginUsingIncorrectCredentials(@Optional("tomsmith") String username,
-                                      @Optional("password") String password,
-                                      @Optional("Your password is invalid!") String expectedWarning) {
+
+    @Test(dataProvider = "testData")
+    public void asUserLoginUsingIncorrectCredentials(String username, String password, String expectedWarning) {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.enterUsername(username);
         loginPage.enterPassword(password);
@@ -35,5 +33,14 @@ public class LoginTests {
     public void afterTest() {
         driver.close();
         driver.quit();
+    }
+
+    @DataProvider
+    public Object[][] testData() {
+        return new Object[][]{
+                {"", "", "Your username is invalid!"},
+                {"tomsmith", "password", "Your password is invalid!"},
+                {"incorrectlogin", "SuperSecretPassword!", "Your username is invalid!"}
+        };
     }
 }
